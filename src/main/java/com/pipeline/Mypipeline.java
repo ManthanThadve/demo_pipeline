@@ -32,6 +32,7 @@ public class Mypipeline {
 
         MyOptions options = PipelineOptionsFactory.fromArgs(args).as(MyOptions.class);
 //        options.setRunner(DirectRunner.class);
+        options.setStreaming(true);
         options.setRunner(DataflowRunner.class);
         options.setProject("DI-GCP");
 
@@ -154,7 +155,7 @@ public class Mypipeline {
 
         TaggedMessages.get(INVALID_Messages)
 //                .apply("WriteToDeadLetterTopic", PubsubIO.writeStrings().to(options.getDLQTopicName()));
-                .apply("WriteToCloudStorage", TextIO.write().to("gs://invalid-records-1232/Invalid_Call_records/rec").withSuffix(".txt"));
+                .apply("WriteToCloudStorage", TextIO.write().to(options.getDLQTopicName()+"\"rec").withSuffix(".txt"));
     }
 
 }
