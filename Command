@@ -1,11 +1,11 @@
 mvn compile exec:java -Dexec.mainClass=com.pipeline.MyPipeline \
 -D exec.args="--project=DI-GCP --jobName=poc-fraud-call-300622 \
---region=europe-west4 \
---serviceAccount=c4e-uc1-sa-4@nttdata-c4e-bde.iam.gserviceaccount.com \
+--region=us-central1-a \
+--serviceAccount=big-data-batch1-poc-svc@di-gcp-351221.iam.gserviceaccount.com \
 --maxNumWorkers=1 --workerMachineType=n1-standard-1 \
 --gcpTempLocation=gs://poc-fraud-call/temp \
 --stagingLocation=gs://poc-fraud-call/staging \
---InputSubscriptionName projects/di-gcp-351221/subscriptions/Telco-gen-data-sub /
+--InputSubscriptionName=projects/di-gcp-351221/subscriptions/Telco-gen-data-sub /
 --DLQTopicName=gs://invalid-records-1232/Invalid_Call_records \
 --streaming"
 
