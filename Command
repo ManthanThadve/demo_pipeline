@@ -1,23 +1,14 @@
-mvn compile exec:java -Dexec.mainClass=com.pipeline.MyPipeline \
--D exec.args="--project=DI-GCP --jobName=poc-fraud-call-300622 \
---region=us-central1-a \
+mvn compile exec:java -Dexec.mainClass=com.pipeline.Mypipeline \
+-D exec.args="--project=di-gcp-351221 \
+--jobName=poc-fraud-call-300622 \
+--region=us-central1 \
 --serviceAccount=big-data-batch1-poc-svc@di-gcp-351221.iam.gserviceaccount.com \
 --maxNumWorkers=1 --workerMachineType=n1-standard-1 \
 --gcpTempLocation=gs://poc-fraud-call/temp \
 --stagingLocation=gs://poc-fraud-call/staging \
---InputSubscriptionName=projects/di-gcp-351221/subscriptions/Telco-gen-data-sub /
+--inputSubscriptionName=projects/di-gcp-351221/subscriptions/Telco-gen-data-sub \
 --DLQTopicName=gs://invalid-records-1232/Invalid_Call_records \
 --streaming"
 
 SubName :- projects/di-gcp-351221/subscriptions/Telco-gen-data-sub
 
-
-mvn compile exec:java -D"exec.mainClass=com.pipeline.MyPipeline" /
---setInputSubscriptionName projects/di-gcp-351221/subscriptions/Telco-gen-data-sub /
---maxNumWorkers=1 /
---jobName=poc-fraud-call-300622 /
---region= /
---serviceAccount= /
---workerMachineType=n1-standard-1 /
---gcpTempLocation=gs://poc-fraud-call/temp /
---stagingLocation=gs://poc-fraud-call/staging /

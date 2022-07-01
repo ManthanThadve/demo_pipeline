@@ -3,9 +3,11 @@ package com.pipeline;
 import org.apache.beam.sdk.schemas.JavaFieldSchema;
 import org.apache.beam.sdk.schemas.annotations.DefaultSchema;
 import org.apache.beam.sdk.schemas.annotations.SchemaCreate;
+import java.io.Serializable;
+
 
 @DefaultSchema(JavaFieldSchema.class)
-public class TableRecord {
+public class TableRecord implements Serializable{
 
     public String CallingIMSI;
     public String CalledIMSI;

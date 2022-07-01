@@ -3,8 +3,9 @@ package com.pipeline;
 //import org.apache.beam.sdk.schemas.JavaFieldSchema;
 //import org.apache.beam.sdk.schemas.annotations.DefaultSchema;
 //import org.apache.beam.sdk.schemas.annotations.SchemaCreate;
+import java.io.Serializable;
 
-public class RecordSchema {
+public class RecordSchema implements Serializable{
     public String systemIdentity;
     public int RecordType;
     public int TimeType;
@@ -24,7 +25,6 @@ public class RecordSchema {
     public String CallingNum;
     public int CallPeriod;
 
-    public RecordSchema() {}
 
     public RecordSchema(String systemIdentity, int recordType, int timeType, int serviceType, int endType,
                         int outgoingTrunk, int transfer, String callingIMSI, String calledIMSI, String MSRN,
