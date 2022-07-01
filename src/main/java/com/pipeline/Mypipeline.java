@@ -93,7 +93,7 @@ public class Mypipeline {
         PCollection<String> TableRec = TaggedMessages.get(VALID_Messages).
                 apply("BigQueryTableSchema", ParDo.of(new DoFn<RecordSchema, TableRecord>() {
                     @ProcessElement
-                    public void processElement(RecordSchema log, OutputReceiver<TableRecord> o) {
+                    public void processElement(@Element RecordSchema log, OutputReceiver<TableRecord> o) {
                         TableRecord tableRecord = new TableRecord(log.CallingIMSI,log.CalledIMSI, log.SwitchNum,log.CallingNum,log.CalledNum,log.CallPeriod,log.DateTime);
                         o.output(tableRecord);
                     }
